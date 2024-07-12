@@ -1,0 +1,33 @@
+
+.header {
+  height: rem(56px);
+  color: #FFB22C;
+  background: rgb(20, 20, 20); /* Ensure background is transparent */
+  
+}
+
+.inner {
+  height: rem(56px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  display: block;
+  line-height: 1;
+  padding: rem(8px) rem(12px);
+  border-radius: var(--mantine-radius-sm);
+  text-decoration: none;
+  color: #F3FEB8;
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+
+  @mixin hover {
+    background-color: light-dark(var(--mantine-color-gray-5), var(--mantine-color-dark-6));
+  }
+}
+
+.linkLabel {
+  margin-right: rem(5px);
+}

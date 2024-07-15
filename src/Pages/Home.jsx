@@ -4,7 +4,15 @@ import classes from '../Styles/Home.module.css';
 import InputWithButton from '../Components/InputWithButton';
 import { Header } from '../Components/Header';
 
+import { RecipeContext } from '../App';
+
+
 export default function Home() {
+
+  
+  // if (error) return <div>Failed to load</div>;
+  // if (!recipe) return <div>Loading...</div>;
+
     return (
         <>
         <div className={classes.homeContainer}>

@@ -70,6 +70,9 @@ export function Header() {
             {items}
           </Group>
           <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
+          <Menu opened={opened} onClose={() => toggle(false)} transition={{ duration: 0 }} position="bottom">
+             <Menu.Dropdown>{items}</Menu.Dropdown>
+          </Menu>
         </div>
       </Container>
     </header>

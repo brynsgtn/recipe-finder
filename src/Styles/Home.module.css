@@ -87,13 +87,4 @@
   
   .secondaryControl {
     color: var(--mantine-color-white);
-    background-color:#FFB22C
-  
-    @mixin hover {
-      background-color: #FFB22C;
-    }
-  }
-
-  .marginBottom {
-
   }

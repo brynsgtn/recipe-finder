@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <RecipeContext.Provider value={{searchInput, setSearchInput, searchResult, setSearchResult}}>
-      <Home />
+        <Home />
       </RecipeContext.Provider>
     </>
   )

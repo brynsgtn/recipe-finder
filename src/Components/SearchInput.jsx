@@ -4,14 +4,14 @@ import { rem } from '@mantine/styles';
 import { useContext, useEffect } from 'react';
 import { RecipeContext } from '../App';
 import useSWR from 'swr';
-import '../Styles/InputWithButton.css'
+import '../Styles/SearchInput.css'
 
 // fetcher function for SWR, which is just a wrapper of the native fetch
 const fetcher = (url) => fetch(url).then(res => res.json());
 
 function SearchInput(props) {
 
-  const { searchInput, setSearchInput, searchResult, setSearchResult } = useContext(RecipeContext); // Global state variables using context management
+  const { searchInput, setSearchInput, searchResult, setSearchResult } = useContext(RecipeContext); // Global state variables using context API
   const { data: recipe, error } = useSWR(searchInput ? `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}` : null, fetcher); // API call using SWR
 
 // Log to console the values of recipe (fetched API data), searchResult(selected item/s).

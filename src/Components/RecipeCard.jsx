@@ -30,7 +30,7 @@ export default function RecipeCard({ meal }) {
       <Card.Section className={classes.section} mt="md">
   
           
-          <Badge size="sm" variant="light" className="mb-3">
+          <Badge size="sm" variant="light" className="mb-3" color="red">
             {strArea}
           </Badge>
    
@@ -51,7 +51,7 @@ export default function RecipeCard({ meal }) {
       </Card.Section> */}
 
       <Group mt="xs">
-        <Button radius="md" style={{ flex: 1 }} onClick={()=>mealId(idMeal)}>
+        <Button radius="md" style={{ flex: 1}} onClick={()=>mealId(idMeal)} color="yellow">
           View recipe
         </Button>
         <ActionIcon variant="default" radius="md" size={36}>

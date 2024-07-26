@@ -1,28 +1,56 @@
 .card {
-    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
-  }
-  
-  .section {
-    border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
-    padding-left: var(--mantine-spacing-md);
-    padding-right: var(--mantine-spacing-md);
-    padding-bottom: var(--mantine-spacing-md);
-  }
-  
-  .like {
-    color: var(--mantine-color-red-6);
-    width: rem(20px);
-    height: rem(20px);
-  }
-  
-  .label {
-    text-transform: uppercase;
-    font-size: var(--mantine-font-size-xs);
-    font-weight: 700;
-  }
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
+  border: none; /* Remove border */
+  transition: transform 0.3s, box-shadow 0.3s; /* Add transition for smooth hover effect */
+}
 
-  .recipeTitle {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+.card:hover {
+  transform: scale(1.02); /* Slightly enlarge the card on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect on hover */
+}
+
+.section {
+  border-bottom: none; /* Remove border */
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+  padding-bottom: var(--mantine-spacing-md);
+}
+
+.like {
+  color: var(--mantine-color-red-6);
+  width: rem(20px);
+  height: rem(20px);
+  transition: color 0.3s; /* Add transition for color change */
+}
+
+.like:hover {
+  color: darken(var(--mantine-color-red-6), 10%); /* Darken color on hover */
+}
+
+.label {
+  text-transform: uppercase;
+  font-size: var(--mantine-font-size-xs);
+  font-weight: 700;
+}
+
+.recipeTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.button {
+  background-color: var(--mantine-color-blue-6); /* Change to your desired color */
+  color: var(--mantine-color-white);
+  border: none;
+  padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
+  border-radius: var(--mantine-radius-md);
+  font-size: var(--mantine-font-size-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s; /* Add transition for smooth hover effect */
+}
+
+.button:hover {
+  background-color: darken(var(--mantine-color-blue-6), 10%); /* Darken color on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}

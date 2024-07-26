@@ -1,5 +1,55 @@
-.container {
-    height: 100vh;
+.result-page-container {
+    min-height: 100vh;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5), /* Dark overlay color */
+        rgba(0, 0, 0, 0.5) /* Same color for a solid darkening effect */
+    ), url(../assets/images/result.jpg);
+    background-size: cover;
     display: flex;
+    flex-direction: column;
+
 }
 
+.result-container {
+    flex: 1;
+    max-width: 1200px;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;  */
+ 
+}
+
+.header{
+    font-weight: 800;
+    font-size: rem(40);
+    letter-spacing: rem(-1px);
+    padding-left: var(--mantine-spacing-md);
+    padding-right: var(--mantine-spacing-md);
+    color: #FFDE4D;
+    margin-bottom: var(--mantine-spacing-lg);
+    font-family:
+      Greycliff CF,
+      var(--mantine-font-family);
+      @media (max-width: $mantine-breakpoint-xs) {
+        font-size: rem(35px);
+        text-align: center;
+  
+      }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--mantine-spacing-lg);
+
+  }
+  
+
+  .no-meals {
+    height: 80vh;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+  }
+
+ 

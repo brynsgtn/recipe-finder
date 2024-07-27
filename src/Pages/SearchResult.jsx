@@ -7,7 +7,8 @@ import { useContext } from 'react';
 import { RecipeContext } from '../App';
 import '../Styles/SearchResult.css';
 import { Header } from '../Components/Header';
-import { Pagination, Button } from '@mantine/core'; // Assuming you're using Mantine's Pagination component
+import { Pagination, Button } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
 
 const ITEMS_PER_PAGE = 8;
 
@@ -17,6 +18,8 @@ export default function SearchResult() {
 
   const meals = searchResult?.meals || [];
   const totalPages = Math.ceil(meals.length / ITEMS_PER_PAGE);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (meals.length === 0) {
@@ -28,6 +31,12 @@ export default function SearchResult() {
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentMeals = meals.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+
+  const backToSearch = () => {
+    console.log("Navigating to home")
+    navigate("/home")
+  }
 
   return (
     <div className="result-page-container">
@@ -45,9 +54,9 @@ export default function SearchResult() {
             <Col xs={12} className="no-meals d-flex">
 
             <p className="header d-block">No recipe found!</p>
-            <Button radius="md" color="red">
-          Back to search
-        </Button>
+            <Button radius="md" color="red" onClick={backToSearch}>
+            Back to search
+            </Button>
             </Col>
           )}
         </Row>

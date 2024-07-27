@@ -4,9 +4,11 @@ import classes from '../Styles/Home.module.css';
 import SearchInput from '../Components/SearchInput';
 import { Header } from '../Components/Header';
 
+
 export default function Home() {
-  // if (error) return <div>Failed to load</div>;
-  // if (!recipe) return <div>Loading...</div>;
+  
+
+
 
     return (
         <>
@@ -19,7 +21,7 @@ export default function Home() {
                   DishDiscover
                   </Title>
                   <Container size={540}>
-                      <SearchInput />
+                      <SearchInput/>
                   </Container>
                   <div className={classes.controls}>
                     <Button className={classes.control} variant="filled" color="red"size="lg">

@@ -1,8 +1,16 @@
 import { Overlay, Container, Title, Button, Text } from '@mantine/core';
 import classes from '../Styles/Landing.module.css';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Landing() {
+
+  const navigate = useNavigate();
+
+  const getStarted = () => {
+    console.log("Navigating to Home Page")
+    navigate("/home")
+  }
     return (
         <>
           <div className={classes.hero}>
@@ -18,7 +26,7 @@ export default function Landing() {
                 MealDB.com offers a comprehensive database and API, enabling you to discover and explore
                 a wide range of recipes tailored to your tastes and preferences.
               </Text>
-              <Button variant="outline" color="yellow" size="xl" radius="xl" className={classes.control}>
+              <Button variant="outline" color="yellow" size="xl" radius="xl" className={classes.control} onClick={getStarted}>
                 Get started
               </Button>
             </Container>

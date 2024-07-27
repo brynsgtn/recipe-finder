@@ -1,6 +1,9 @@
 import { IconHeart } from '@tabler/icons-react';
 import { Card, Image, Text, Group, Badge, Button, ActionIcon } from '@mantine/core';
 import classes from '../Styles/RecipeCard.module.css';
+import { useNavigate } from 'react-router-dom';
+import { RecipeContext } from '../App';
+import { useContext } from 'react';
 
 
 // Helper function to capitalize every first letter in each word of a string
@@ -8,11 +11,9 @@ const capitalizeWords = (str) => {
     return str.replace(/\b\w/g, (char) => char.toUpperCase());
   };
 
-const mealId = (id) => {
-    console.log("My id is: ", id)
-}
 export default function RecipeCard({ meal }) {
   const { strTags, strMealThumb, strInstructions, strMeal, strCategory, strArea, idMeal } = meal;
+  const { setSelectedRecipe } = useContext(RecipeContext);
 //   const tags = strTags ? strTags.split(",") : [];
 //   const instructions = strInstructions.slice(0, 100);
 //   const features = tags.map((tag) => (
@@ -21,6 +22,15 @@ export default function RecipeCard({ meal }) {
 //     </Badge>
 //   ));
 
+const navigate = useNavigate();
+
+const viewRecipe = (id) => {
+  console.log("My id is: ", id)
+  console.log(`Navigating to ${strMeal} details`)
+  console.log(meal)
+  setSelectedRecipe(meal)
+  navigate(`/search/${idMeal}`)
+}
   return (
     <Card withBorder radius="md" p="md" className={classes.card}>
       <Card.Section>
@@ -51,7 +61,7 @@ export default function RecipeCard({ meal }) {
       </Card.Section> */}
 
       <Group mt="xs">
-        <Button radius="md" style={{ flex: 1}} onClick={()=>mealId(idMeal)} color="yellow">
+        <Button radius="md" style={{ flex: 1}} onClick={()=>viewRecipe(idMeal)} color="yellow">
           View recipe
         </Button>
         <ActionIcon variant="default" radius="md" size={36}>

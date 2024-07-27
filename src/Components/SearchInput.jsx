@@ -5,6 +5,7 @@ import { useContext, useEffect } from 'react';
 import { RecipeContext } from '../App';
 import useSWR from 'swr';
 import '../Styles/SearchInput.css'
+import { useNavigate } from 'react-router-dom';
 
 // fetcher function for SWR, which is just a wrapper of the native fetch
 const fetcher = (url) => fetch(url).then(res => res.json());
@@ -13,6 +14,7 @@ function SearchInput(props) {
 
   const { searchInput, setSearchInput, searchResult, setSearchResult } = useContext(RecipeContext); // Global state variables using context API
   const { data: recipe, error } = useSWR(searchInput ? `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}` : null, fetcher); // API call using SWR
+  const navigate = useNavigate();
 
 // Log to console the values of recipe (fetched API data), searchResult(selected item/s).
   useEffect(() => {
@@ -33,12 +35,14 @@ function SearchInput(props) {
   const handleClick = () => {
     setSearchResult(recipe);
     setSearchInput("");
+    search();
   }
 
 // Set the value of searchResult(selected item/s) and updates the value of searchInput(Input area) to empty string when ENTER key is pressed.
   const handleEnterKey = (e) => {
     if(e.key === "Enter") {
       handleClick();
+      search();
     }
   }
 
@@ -46,6 +50,13 @@ function SearchInput(props) {
   const handleSelect = (searchItem) => {
     setSearchInput(searchItem);
   }
+
+  const search = () => {
+    console.log("Navigating to searchResult page")
+    navigate("/search");
+  }
+
+
 
 
   return (
@@ -61,7 +72,7 @@ function SearchInput(props) {
       leftSection={<IconSearch style={{ width: rem(18), height: rem(18) }} stroke={1.5} />}
       rightSection={
         <ActionIcon size={32} radius="xl" color="yellow" variant="filled" onClick={handleClick}>
-          <IconArrowRight style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+          <IconArrowRight style={{ width: rem(18), height: rem(18) }} stroke={1.5}/>
         </ActionIcon>
       }
       {...props}

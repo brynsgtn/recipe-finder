@@ -52,4 +52,8 @@
     align-items: center;
   }
 
- 
+  .buttonContainer {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    margin-top: 20px; /* Add space above the button */
+}

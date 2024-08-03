@@ -1,6 +1,156 @@
 .like {
     color: var(--mantine-color-red-6);
-    width: rem(20px);
-    height: rem(20px);
+    width: rem(30px);
+    height: rem(30px);
     transition: color 0.3s; /* Add transition for color change */
   }
+
+  .recipeContainer{
+    background-color: #F3EDC8;
+  }
+
+  .recipeDetailsContainer {
+   
+    max-width: 1200px;
+  }
+
+  .header {
+    font-size: 3rem;
+    font-weight:600;
+    text-align: center;
+    padding: 2.5rem;
+    border-bottom: solid black 5px;
+    word-wrap: break-word;
+  }
+
+  .image {
+    width: 100%;
+    max-width: 100%; /* Optional: Set a max width for the image */
+    height: auto;
+    display: block;
+    margin: 20px auto 10px auto;
+}
+
+.imageContainer {
+  position: relative;
+  display: inline-block; /* Make sure the container is inline-block */
+  align-items: center;
+  justify-content: center; /* Center the image horizontally */
+  margin: auto; /* Center the container itself */
+}
+
+.heartButton {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  background-color: white; /* Optional: Add background color for better visibility */
+  border-radius: 50%; /* Optional: Add border-radius for circular shape */
+  padding: 5px; /* Optional: Add padding for better spacing */
+  z-index: 10; /* Ensure it overlaps the image */
+}
+
+.ingredients{
+  font-size: 2rem;
+}
+
+.ingredientsContainer {
+  background-color: #BF3131;
+  color: #F3EDC8;
+  padding: 30px 0 30px 50px;
+  margin-top: 30px;
+}
+
+
+.ingredientList {
+  list-style-type: disc; /* Change list style to disc */
+  padding-left: 20px; /* Add padding to the left */
+  margin-top: 10px; /* Add margin to the top */
+  font-size: 1.2rem; /* Increase font size */
+  line-height: 1.6; /* Increase line height */
+}
+
+.ingredientItem {
+  margin-bottom: 5px; /* Add margin to the bottom of each item */
+}
+
+.directionsContainer {
+  background-color: #EAD196;
+}
+
+.directions {
+  border-bottom: solid black 3px;
+  font-size: 2rem;
+  padding: 30px 50px;
+}
+
+.instructions {
+  padding: 40px;
+  font-size: 1.2rem; /* Increase font size */
+  line-height: 1.6; /* Increase line height for readability */
+}
+
+
+/* Responsive video container */
+.videoContainer {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  margin-top: 20px;
+  border-radius: 10px; /* Optional: Add rounded corners */
+}
+
+.videoContainer iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.originContainer {
+  margin-top: 20px !important;
+  padding: 2.5rem;
+  background-color: #EAD196;
+}
+
+/* Media query for large screens and up */
+@media (min-width: 992px) { /* Adjust the min-width value based on your needs */
+  .originContainer {
+    margin-top: 150px !important; /* Margin for large screens */
+  }
+}
+
+
+.origin, .category {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.categoryContainer {
+  margin-top: 30px;
+  padding: 2.5rem;
+  background-color: #EAD196;
+}
+
+.tagsContainer {
+  background-color: #BF3131;
+  margin-top: 30px;
+  padding: 2.5rem;
+  color: #F3EDC8;
+}
+
+.might {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  margin-top: 20px; /* Add some spacing from the content above */
+  padding-bottom: 20px;
+}

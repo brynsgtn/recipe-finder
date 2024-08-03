@@ -55,7 +55,7 @@ export default function SearchResult() {
 
             <p className="header d-block">No recipe found!</p>
             <Button radius="md" color="red" onClick={backToSearch}>
-            Back to search
+              Back to search
             </Button>
             </Col>
           )}
@@ -69,6 +69,16 @@ export default function SearchResult() {
             color="yellow"
           />
         )}
+        {meals.length > 0 &&
+
+          <div className="buttonContainer">
+            <Button radius="md" color="red" onClick={backToSearch}>
+              Back to search
+            </Button>
+        </div>
+        
+        }
+        
       </Container>
     </div>
   );

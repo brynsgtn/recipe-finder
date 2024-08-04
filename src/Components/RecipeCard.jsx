@@ -1,4 +1,4 @@
-import { IconHeart } from '@tabler/icons-react';
+import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
 import { Card, Image, Text, Group, Badge, Button, ActionIcon } from '@mantine/core';
 import classes from '../Styles/RecipeCard.module.css';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,7 @@ const capitalizeWords = (str) => {
 
 export default function RecipeCard({ meal }) {
   const { strTags, strMealThumb, strInstructions, strMeal, strCategory, strArea, idMeal } = meal;
-  const { setSelectedRecipe } = useContext(RecipeContext);
+  const { setSelectedRecipe, favoriteRecipes, toggleFavorite } = useContext(RecipeContext);
 //   const tags = strTags ? strTags.split(",") : [];
 //   const instructions = strInstructions.slice(0, 100);
 //   const features = tags.map((tag) => (
@@ -31,6 +31,12 @@ const viewRecipe = (id) => {
   setSelectedRecipe(meal)
   navigate(`/search/${idMeal}`)
 }
+
+
+const isFavorite = Array.isArray(favoriteRecipes) && favoriteRecipes.some((fav) => fav.idMeal === idMeal);
+
+
+
   return (
     <Card withBorder radius="md" p="md" className={classes.card}>
       <Card.Section>
@@ -64,8 +70,12 @@ const viewRecipe = (id) => {
         <Button radius="md" style={{ flex: 1}} onClick={()=>viewRecipe(idMeal)} color="yellow">
           View recipe
         </Button>
-        <ActionIcon variant="default" radius="md" size={36}>
-          <IconHeart className={classes.like} stroke={1.5} />
+        <ActionIcon variant="default" radius="md" size={36} onClick={() => toggleFavorite(meal)}>
+          {isFavorite ? (
+            <IconHeartFilled className={classes.like} stroke={1.5} />
+          ) : (
+            <IconHeart className={classes.like} stroke={1.5} />
+          )}
         </ActionIcon>
       </Group>
     </Card>

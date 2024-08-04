@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { RecipeContext } from '../App';
 import { ActionIcon, Button, Badge } from '@mantine/core';
-import { IconHeart } from '@tabler/icons-react';
+import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
 import classes from '../Styles/RecipeDetails.module.css';
 import { useNavigate } from 'react-router-dom';
 import { Header } from '../Components/Header';
@@ -11,7 +11,7 @@ import Col from 'react-bootstrap/Col';
 
 export default function RecipeDetails() {
 
-    const { selectedRecipe } = useContext(RecipeContext);
+    const { selectedRecipe, favoriteRecipes, toggleFavorite } = useContext(RecipeContext);
     const { strMeal, strMealThumb, strYoutube, strInstructions, strArea, strCategory, strTags } = selectedRecipe;
 
     const ingredients = [];
@@ -24,13 +24,10 @@ export default function RecipeDetails() {
       }
     }
 
-    const instructions = strInstructions.split('.').map(instruction => instruction.trim()).filter(instruction => instruction);
+    // const instructions = strInstructions.split('.').map(instruction => instruction.trim()).filter(instruction => instruction);
 
-    console.log(instructions);
-
-        // Handle the case where strTags might be null or not contain any commas
-        const tags = strTags ? strTags.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
-    console.log(tags)
+    // Handle the case where strTags might be null or not contain any commas
+    const tags = strTags ? strTags.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
 
     // Extract YouTube video ID from the URL
     const youtubeVideoId = strYoutube ? strYoutube.split('v=')[1] : null;
@@ -38,10 +35,12 @@ export default function RecipeDetails() {
     
     const navigate = useNavigate();
     const backToSearchResult = () => {
-        console.log("Navigating to SearchResult Page");
         navigate("/search");
     }
-    
+
+    // Determine if the current recipe is in the favorites
+    const isFavorite = favoriteRecipes.some((fav) => fav.idMeal === selectedRecipe.idMeal);
+
     return (
         <div className={classes.recipeContainer}>
             <Header/>
@@ -51,68 +50,73 @@ export default function RecipeDetails() {
                         <h1 className={classes.header}>{strMeal}</h1>
                         <div className="d-flex">
                             <div className={classes.imageContainer}>
-                                <img src={strMealThumb} className={classes.image}/>
-                                <ActionIcon className={classes.heartButton} variant="default" radius="md" size={36}>
-                                    <IconHeart className={classes.like} stroke={1.5} />
+                                <img src={strMealThumb} className={classes.image} alt={strMeal}/>
+                                <ActionIcon 
+                                    className={classes.heartButton} 
+                                    variant="default" 
+                                    radius="md" 
+                                    size={36} 
+                                    onClick={() => toggleFavorite(selectedRecipe)}
+                                >
+                                    {isFavorite ? (
+                                        <IconHeartFilled className={classes.like} stroke={1.5} />
+                                    ) : (
+                                        <IconHeart className={classes.like} stroke={1.5} />
+                                    )}
                                 </ActionIcon>
                             </div>
                         </div>
                         <div className={classes.ingredientsContainer}>
                             <h1 className={classes.ingredients}>INGREDIENTS</h1>
                             <ul className={classes.ingredientList}>
-                                {ingredients.map((item) => (
-                                    <li key={item} className={classes.ingredientItem}>{item}</li>
+                                {ingredients.map((item, index) => (
+                                    <li key={index} className={classes.ingredientItem}>{item}</li>
                                 ))}
                             </ul>
                         </div>
                         <div className={classes.directionsContainer}>
                             <h1 className={classes.directions}>DIRECTIONS</h1>
-                                {/* <ol>
-                                    {instructions.map((instruction) => (
-                                        <li key={instruction} className={classes.instructions}>{instruction}.</li>
-                                    ))}
-                                </ol> */}
-                                <p className={classes.instructions}>{strInstructions}</p>
+                            <p className={classes.instructions}>{strInstructions}</p>
                         </div>
                         <div>
                             {embedUrl && (
-                                        <div className={classes.videoContainer}>
-                                            <iframe 
-                                                src={embedUrl} 
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                                allowFullScreen 
-                                                title="YouTube video player">
-                                            </iframe>
-                                        </div>
-                                    )}
+                                <div className={classes.videoContainer}>
+                                    <iframe 
+                                        src={embedUrl} 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowFullScreen 
+                                        title="YouTube video player">
+                                    </iframe>
+                                </div>
+                            )}
                         </div>  
                     </Col>
                     <Col>
                         <div className={classes.originContainer}>
                             <p className={classes.origin}>Origin:  
                                 <span className="ms-3">
-                                    <Badge size="lg" variant="light"  color="white">
+                                    <Badge size="lg" variant="light" color="red">
                                         {strArea}
                                     </Badge>
                                 </span>
                             </p>
                         </div>
-                        <div  className={classes.categoryContainer}>
+                        <div className={classes.categoryContainer}>
                             <p className={classes.category}>Category: 
                                 <span className="ms-1">
-                                    <Badge size="lg" variant="light"  color="white">
+                                    <Badge size="lg" variant="light" color="white">
                                         {strCategory}
                                     </Badge>
                                 </span>
                             </p>
                         </div>
-                        { tags.length > 0  && 
+                        { tags.length > 0 && 
                         <div className={classes.tagsContainer}>
                             <p className={classes.might}>You might also like:</p>
                             <ul>
-                                {tags.map(tag => (
-                                    <li className='mb-3'>
-                                        <Badge size="xl" variant="light"  color="white">
+                                {tags.map((tag, index) => (
+                                    <li key={index} className='mb-3'>
+                                        <Badge size="xl" variant="light" color="white">
                                             {tag}
                                         </Badge>
                                     </li>
@@ -124,7 +128,7 @@ export default function RecipeDetails() {
                 </Row>
             </Container>
             <div className={classes.buttonContainer}>
-                <Button radius="md" color="red" onClick={backToSearchResult}>
+                <Button size="lg" radius="md" color="red" variant="outline" onClick={backToSearchResult} className='my-5'>
                     Back to Recipe
                 </Button>
             </div>  

@@ -1,9 +1,7 @@
-
 .header {
-  height: rem(56px);
+  height: rem(70px);
   color: #FFB22C;
-  background: rgb(20, 20, 20); /* Ensure background is transparent */
-  
+  background: rgb(20, 20, 20);
 }
 
 .inner {
@@ -13,22 +11,57 @@
   align-items: center;
 }
 
+.logo {
+  height: rem(40px); /* Adjust height as needed */
+  width: auto; /* Maintain aspect ratio */
+  margin-right: rem(10px); /* Space between logo and title */
+}
+
+.title {
+  font-size: rem(24px);
+  font-weight: bold;
+  color: #FFDE4D;
+  margin: 0; /* Ensure no extra margin */
+}
+
 .link {
   display: block;
   line-height: 1;
   padding: rem(8px) rem(12px);
   border-radius: var(--mantine-radius-sm);
   text-decoration: none;
-  color: #F3FEB8;
+  color: #FFDE4D;
   font-size: var(--mantine-font-size-sm);
   font-weight: 500;
-
   @mixin hover {
     background-color: light-dark(var(--mantine-color-gray-5), var(--mantine-color-dark-6));
   }
 }
 
-.linkLabel {
-  margin-right: rem(5px);
+.burgerDropdown {
+  position: absolute;
+  top: rem(56px); /* Adjust to ensure it appears below the header */
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: rem(10px);
+  background-color: rgb(20, 20, 20); /* Match header background */
 }
 
+
+/* Style for link with item count */
+.linkWithCount {
+  position: relative;
+  padding-right: rem(20px); /* Space for the count */
+}
+
+.linkWithCount::after {
+  content: attr(data-count);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: rem(14px);
+  color: #F3FEB8;
+}

@@ -71,7 +71,7 @@ function SearchInput(props) {
       rightSectionWidth={42}
       leftSection={<IconSearch style={{ width: rem(18), height: rem(18) }} stroke={1.5} />}
       rightSection={
-        <ActionIcon size={32} radius="xl" color="yellow" variant="filled" onClick={handleClick}>
+        <ActionIcon size={32} radius="xl" color="yellow" variant="filled" onClick={handleClick} disabled={!searchInput}>
           <IconArrowRight style={{ width: rem(18), height: rem(18) }} stroke={1.5}/>
         </ActionIcon>
       }

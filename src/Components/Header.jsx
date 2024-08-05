@@ -39,7 +39,7 @@ const links = [
 
   return (
     <header className={classes.header}>
-      <Container size="lg" className="p-2">
+      <Container size="md" className="p-2">
         <div className={classes.inner}>
           <Group align="center" spacing="sm">
             <Image src="../src/assets/images/dishlogo.png" alt="Logo" className={classes.logo} />

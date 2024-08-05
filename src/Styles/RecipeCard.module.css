@@ -38,19 +38,3 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.button {
-  background-color: var(--mantine-color-blue-6); /* Change to your desired color */
-  color: var(--mantine-color-white);
-  border: none;
-  padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
-  border-radius: var(--mantine-radius-md);
-  font-size: var(--mantine-font-size-md);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s; /* Add transition for smooth hover effect */
-}
-
-.button:hover {
-  background-color: darken(var(--mantine-color-blue-6), 10%); /* Darken color on hover */
-  transform: scale(1.05); /* Slightly enlarge the button on hover */
-}

@@ -1,0 +1,43 @@
+.card {
+    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
+    border: none; /* Remove border */
+    transition: transform 0.3s, box-shadow 0.3s; /* Add transition for smooth hover effect */
+  }
+  
+  .card:hover {
+    transform: scale(1.02); /* Slightly enlarge the card on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect on hover */
+  }
+  .section {
+    border-bottom: none; /* Remove border */ 
+    padding-left: var(--mantine-spacing-md);
+    padding-right: var(--mantine-spacing-md);
+    padding-bottom: var(--mantine-spacing-md);
+  }
+  
+  .like {
+    color: var(--mantine-color-red-6);
+    width: rem(20px);
+    height: rem(20px);
+  }
+  
+  .label {
+    text-transform: uppercase;
+    font-size: var(--mantine-font-size-xs);
+    font-weight: 700;
+  }
+
+  .categoryTitle {
+    height: 65px; /* Adjust height as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+
+  .categoryName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

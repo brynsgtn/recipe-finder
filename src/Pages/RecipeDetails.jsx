@@ -1,18 +1,28 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { RecipeContext } from '../App';
 import { ActionIcon, Button, Badge } from '@mantine/core';
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
 import classes from '../Styles/RecipeDetails.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Header } from '../Components/Header';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+
+
+
 export default function RecipeDetails() {
 
-    const { selectedRecipe, favoriteRecipes, toggleFavorite } = useContext(RecipeContext);
+  const { id } = useParams();
+  const { selectedRecipe, favoriteRecipes, toggleFavorite } = useContext(RecipeContext);
+
+
+
+  
+    
     const { strMeal, strMealThumb, strYoutube, strInstructions, strArea, strCategory, strTags } = selectedRecipe;
+
 
     const ingredients = [];
     

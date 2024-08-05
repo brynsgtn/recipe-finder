@@ -3,11 +3,16 @@ import { Title, Text, Container, Button, Overlay } from '@mantine/core';
 import classes from '../Styles/Home.module.css';
 import SearchInput from '../Components/SearchInput';
 import { Header } from '../Components/Header';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Home() {
   
+  const navigate = useNavigate();
 
+  const goToCategories = () => {
+    navigate("/categories")
+  }
 
 
     return (
@@ -24,7 +29,7 @@ export default function Home() {
                       <SearchInput/>
                   </Container>
                   <div className={classes.controls}>
-                    <Button className={classes.control} variant="filled" color="red"size="lg">
+                    <Button className={classes.control} variant="filled" color="red"size="lg" onClick={goToCategories}>
                       Categories
                     </Button>
                     <Button className={cx(classes.control, classes.secondaryControl)} variant="light" color="yellow" size="lg">

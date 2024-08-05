@@ -7,12 +7,14 @@ import SearchResult from './Pages/SearchResult';
 import RecipeDetails from './Pages/RecipeDetails';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Favorites from './Pages/Favorites';
+import Categories from './Pages/Categories';
+import Category from './Pages/Category';
 
 // Context for sharing state across components
 export const RecipeContext = createContext();
 
 // Helper function to safely parse JSON from localStorage
-const safeJSONParse = (key) => {
+const safeJSONParse = (key, defaultValue = []) => {
   const storedValue = localStorage.getItem(key);
   if (storedValue) {
     try {
@@ -21,12 +23,12 @@ const safeJSONParse = (key) => {
       console.error(`Error parsing ${key} from localStorage:`, e);
     }
   }
-  return [];
+  return defaultValue;
 };
 
 // Initialize state from localStorage
 const searchResultFromLocalStorage = safeJSONParse("searchResult");
-const selectedRecipeFromLocalStorage = safeJSONParse("selectedRecipe");
+const selectedRecipeFromLocalStorage = safeJSONParse("selectedRecipe", null); // assuming selectedRecipe might be an object or null
 const favoriteRecipesFromLocalStorage = safeJSONParse("favoriteRecipes");
 
 function App() {
@@ -61,6 +63,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/search" element={<SearchResult />} />
           <Route path="/search/:id" element={<RecipeDetails />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/categories/:category" element={<Category />} />
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </Router>

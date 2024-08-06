@@ -10,6 +10,7 @@ import Favorites from './Pages/Favorites';
 import Categories from './Pages/Categories';
 import Category from './Pages/Category';
 
+
 // Context for sharing state across components
 export const RecipeContext = createContext();
 
@@ -55,8 +56,16 @@ function App() {
     });
   };
 
+  const fetchAndSetSelectedRecipe = async (id) => {
+    const { data } = useSWR(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`, fetcher);
+    if (data && data.meals && data.meals.length > 0) {
+      setSelectedRecipe(data.meals[0]);
+    }
+  };
+
+
   return (
-    <RecipeContext.Provider value={{ searchInput, setSearchInput, searchResult, setSearchResult, selectedRecipe, setSelectedRecipe, favoriteRecipes, setFavoriteRecipes, toggleFavorite }}>
+    <RecipeContext.Provider value={{ searchInput, setSearchInput, searchResult, setSearchResult, selectedRecipe, setSelectedRecipe, favoriteRecipes, setFavoriteRecipes, toggleFavorite, fetchAndSetSelectedRecipe }}>
       <Router>
         <Routes>
           <Route path="/" element={<Landing />} />

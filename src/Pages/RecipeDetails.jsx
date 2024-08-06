@@ -44,8 +44,8 @@ export default function RecipeDetails() {
     const embedUrl = youtubeVideoId ? `https://www.youtube.com/embed/${youtubeVideoId}` : null;
     
     const navigate = useNavigate();
-    const backToSearchResult = () => {
-        navigate("/search");
+    const back = () => {
+        navigate(-1);
     }
 
     // Determine if the current recipe is in the favorites
@@ -102,24 +102,26 @@ export default function RecipeDetails() {
                         </div>  
                     </Col>
                     <Col>
-                        <div className={classes.originContainer}>
-                            <p className={classes.origin}>Origin:  
-                                <span className="ms-3">
-                                    <Badge size="lg" variant="light" color="red">
-                                        {strArea}
-                                    </Badge>
-                                </span>
-                            </p>
-                        </div>
-                        <div className={classes.categoryContainer}>
-                            <p className={classes.category}>Category: 
-                                <span className="ms-1">
-                                    <Badge size="lg" variant="light" color="white">
-                                        {strCategory}
-                                    </Badge>
-                                </span>
-                            </p>
-                        </div>
+                    <div className={classes.originContainer}>
+  <div className={classes.origin}>
+    Origin:
+    <span className="ms-3">
+      <Badge size="lg" variant="light" color="red">
+        {strArea}
+      </Badge>
+    </span>
+  </div>
+</div>
+<div className={classes.categoryContainer}>
+  <div className={classes.category}>
+    Category:
+    <span className="ms-1">
+      <Badge size="lg" variant="light" color="white">
+        {strCategory}
+      </Badge>
+    </span>
+  </div>
+</div>
                         { tags.length > 0 && 
                         <div className={classes.tagsContainer}>
                             <p className={classes.might}>You might also like:</p>
@@ -138,8 +140,8 @@ export default function RecipeDetails() {
                 </Row>
             </Container>
             <div className={classes.buttonContainer}>
-                <Button size="lg" radius="md" color="red" variant="outline" onClick={backToSearchResult} className='my-5'>
-                    Back to Recipe
+                <Button size="lg" radius="md" color="red" variant="outline" onClick={back} className='my-5'>
+                    Back
                 </Button>
             </div>  
         </div>

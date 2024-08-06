@@ -1,20 +1,34 @@
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
 import { Card, Image, Text, Group, Badge, Button, ActionIcon } from '@mantine/core';
 import classes from '../Styles/RecipeCard.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { RecipeContext } from '../App';
 import { useContext, useEffect } from 'react';
+import useSWR from 'swr';
 
+const fetcher = (url) => fetch(url).then(res => res.json());
 
 // Helper function to capitalize every first letter in each word of a string
 const capitalizeWords = (str) => {
     return str.replace(/\b\w/g, (char) => char.toUpperCase());
   };
 
-export default function RecipeCard({ meal, id }) {
+export default function RecipeCard({ meal }) {
   const {  strMealThumb, strMeal, strArea, idMeal } = meal;
   const { setSelectedRecipe, selectedRecipe, favoriteRecipes, toggleFavorite } = useContext(RecipeContext);
- 
+
+// Fetch recipe data using SWR
+const { data, error } = useSWR(idMeal ? `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}` : null, fetcher);
+const recipe = data?.meals ? data.meals[0] : null;
+  
+  useEffect(() => {
+   
+    console.log("Selected recipe: ", recipe);
+        // console.log("idMeal: ", data.categories.idMeal)
+    
+}, [recipe]);
+
+
 
 
   //   const tags = strTags ? strTags.split(",") : [];
@@ -28,10 +42,11 @@ export default function RecipeCard({ meal, id }) {
 const navigate = useNavigate();
 
 const viewRecipe = (id) => {
-  console.log("My id is: ", id)
+ 
+  console.log("My id is: ", id) 
   console.log(`Navigating to ${strMeal} details`)
   console.log("meals: ", meal)
-  setSelectedRecipe(meal)
+  setSelectedRecipe(recipe)
   navigate(`/search/${idMeal}`)
 }
 
@@ -48,11 +63,11 @@ const isFavorite = Array.isArray(favoriteRecipes) && favoriteRecipes.some((fav) 
 
       <Card.Section className={classes.section} mt="md">
   
-          {strArea && 
-            <Badge size="sm" variant="light" className="mb-3" color="red">
-            {strArea}
-          </Badge>
-          }
+      {(strArea || recipe.strArea) && (
+                <Badge size="sm" variant="light" className="mb-3" color="red">
+                    {strArea || recipe.strArea}
+                </Badge>
+            )}
           
    
        

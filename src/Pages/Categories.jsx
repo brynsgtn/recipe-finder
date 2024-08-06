@@ -19,29 +19,32 @@ export default function Categories() {
     const [currentPage, setCurrentPage] = useState(1);
     const navigate = useNavigate(); // Initialize useNavigate
 
-    if (error) return <div>Failed to load categories</div>;
-    if (!data) return <div>Loading...</div>;
+    
     useEffect(() => {
         if (data) {
             console.log("Categories: ", data.categories);
         }
     }, [data]);
 
-    
-
-    const { categories } = data;
-    const totalPages = Math.ceil(categories.length / ITEMS_PER_PAGE);
-
     useEffect(() => {
-        if (categories.length === 0) {
+      if (data && data.categories) {
+        const totalPages = Math.ceil(data.categories.length / ITEMS_PER_PAGE);
+        if (data.categories.length === 0) {
           setCurrentPage(1); // Reset page to 1 when no meals
         } else if (currentPage > totalPages) {
           setCurrentPage(totalPages); // Adjust current page if necessary
         }
-      }, [categories, currentPage, totalPages]);
-    
-      const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-      const currentCategories = categories.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+      }
+    }, [data, currentPage]);
+  
+    if (error) return <div>Failed to load categories</div>;
+    if (!data) return <div>Loading...</div>;
+  
+    const { categories } = data;
+    const totalPages = Math.ceil(categories.length / ITEMS_PER_PAGE);
+  
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const currentCategories = categories.slice(startIndex, startIndex + ITEMS_PER_PAGE);
      
       const back = () => {
         navigate(-1);

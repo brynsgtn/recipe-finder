@@ -10,50 +10,29 @@ const fetcher = (url) => fetch(url).then(res => res.json());
 
 // Helper function to capitalize every first letter in each word of a string
 const capitalizeWords = (str) => {
-    return str.replace(/\b\w/g, (char) => char.toUpperCase());
-  };
+  return str.replace(/\b\w/g, (char) => char.toUpperCase());
+};
 
 export default function RecipeCard({ meal }) {
-  const {  strMealThumb, strMeal, strArea, idMeal } = meal;
-  const { setSelectedRecipe, selectedRecipe, favoriteRecipes, toggleFavorite } = useContext(RecipeContext);
+  const { strMealThumb, strMeal, strArea, idMeal } = meal;
+  const { setSelectedRecipe, favoriteRecipes, toggleFavorite } = useContext(RecipeContext);
 
-// Fetch recipe data using SWR
-const { data, error } = useSWR(idMeal ? `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}` : null, fetcher);
-const recipe = data?.meals ? data.meals[0] : null;
-  
+  // Fetch recipe data using SWR
+  const { data, error } = useSWR(idMeal ? `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}` : null, fetcher);
+  const recipe = data?.meals ? data.meals[0] : null;
+
   useEffect(() => {
-   
     console.log("Selected recipe: ", recipe);
-        // console.log("idMeal: ", data.categories.idMeal)
-    
-}, [recipe]);
+  }, [recipe]);
 
+  const navigate = useNavigate();
 
+  const viewRecipe = (id) => {
+    setSelectedRecipe(recipe);
+    navigate(`/search/${idMeal}`);
+  };
 
-
-  //   const tags = strTags ? strTags.split(",") : [];
-//   const instructions = strInstructions.slice(0, 100);
-//   const features = tags.map((tag) => (
-//     <Badge variant="light" key={tag}>
-//       {tag}
-//     </Badge>
-//   ));
-
-const navigate = useNavigate();
-
-const viewRecipe = (id) => {
- 
-  console.log("My id is: ", id) 
-  console.log(`Navigating to ${strMeal} details`)
-  console.log("meals: ", meal)
-  setSelectedRecipe(recipe)
-  navigate(`/search/${idMeal}`)
-}
-
-
-const isFavorite = Array.isArray(favoriteRecipes) && favoriteRecipes.some((fav) => fav.idMeal === idMeal);
-
-
+  const isFavorite = Array.isArray(favoriteRecipes) && favoriteRecipes.some((fav) => fav.idMeal === idMeal);
 
   return (
     <Card withBorder radius="md" p="md" className={classes.card}>
@@ -62,23 +41,18 @@ const isFavorite = Array.isArray(favoriteRecipes) && favoriteRecipes.some((fav) 
       </Card.Section>
 
       <Card.Section className={classes.section} mt="md">
-  
-      {(strArea || recipe.strArea) && (
-                <Badge size="sm" variant="light" className="mb-3" color="red">
-                    {strArea || recipe.strArea}
-                </Badge>
-            )}
-          
-   
-       
-         <Text fz="lg" fw={500} className={classes.recipeTitle}>
-            {capitalizeWords(strMeal)}
-          </Text>
-      
+        {(strArea || (recipe && recipe.strArea)) && (
+          <Badge size="sm" variant="light" className="mb-3" color="red">
+            {strArea || (recipe && recipe.strArea)}
+          </Badge>
+        )}
+        <Text fz="lg" fw={500} className={classes.recipeTitle}>
+          {capitalizeWords(strMeal)}
+        </Text>
       </Card.Section>
 
       <Group mt="xs">
-        <Button radius="md" style={{ flex: 1}} onClick={()=>viewRecipe(idMeal)} color="yellow">
+        <Button radius="md" style={{ flex: 1 }} onClick={() => viewRecipe(idMeal)} color="yellow">
           View recipe
         </Button>
         <ActionIcon variant="default" radius="md" size={36} onClick={() => toggleFavorite(meal)}>

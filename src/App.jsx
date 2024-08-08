@@ -9,12 +9,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Favorites from './Pages/Favorites';
 import Categories from './Pages/Categories';
 import Category from './Pages/Category';
+import Countries from './Pages/Countries';
+import Country from './Pages/Country';
 
 
 // Context for sharing state across components
 export const RecipeContext = createContext();
 
-// Helper function to safely parse JSON from localStorage
+// Function to safely parse JSON from localStorage
 const safeJSONParse = (key, defaultValue = []) => {
   const storedValue = localStorage.getItem(key);
   if (storedValue) {
@@ -29,7 +31,7 @@ const safeJSONParse = (key, defaultValue = []) => {
 
 // Initialize state from localStorage
 const searchResultFromLocalStorage = safeJSONParse("searchResult");
-const selectedRecipeFromLocalStorage = safeJSONParse("selectedRecipe", null); // assuming selectedRecipe might be an object or null
+const selectedRecipeFromLocalStorage = safeJSONParse("selectedRecipe", null);
 const favoriteRecipesFromLocalStorage = safeJSONParse("favoriteRecipes");
 
 function App() {
@@ -38,13 +40,14 @@ function App() {
   const [selectedRecipe, setSelectedRecipe] = useState(selectedRecipeFromLocalStorage);
   const [favoriteRecipes, setFavoriteRecipes] = useState(favoriteRecipesFromLocalStorage);
 
+  // Update localStorage whenever state variables change
   useEffect(() => {
-    // Update localStorage whenever state variables change
     localStorage.setItem("searchResult", JSON.stringify(searchResult));
     localStorage.setItem("selectedRecipe", JSON.stringify(selectedRecipe));
     localStorage.setItem("favoriteRecipes", JSON.stringify(favoriteRecipes));
   }, [searchResult, selectedRecipe, favoriteRecipes]);
 
+  // Function to add or remove favorite recipes
   const toggleFavorite = (meal) => {
     setFavoriteRecipes((prevFavorites) => {
       const isFavorite = prevFavorites.some((fav) => fav.idMeal === meal.idMeal);
@@ -56,6 +59,7 @@ function App() {
     });
   };
 
+  // Function to fetch selected recipe data
   const fetchAndSetSelectedRecipe = async (id) => {
     const { data } = useSWR(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`, fetcher);
     if (data && data.meals && data.meals.length > 0) {
@@ -63,9 +67,21 @@ function App() {
     }
   };
 
-
   return (
-    <RecipeContext.Provider value={{ searchInput, setSearchInput, searchResult, setSearchResult, selectedRecipe, setSelectedRecipe, favoriteRecipes, setFavoriteRecipes, toggleFavorite, fetchAndSetSelectedRecipe }}>
+    <RecipeContext.Provider 
+          value={{ 
+                    searchInput, 
+                    setSearchInput, 
+                    searchResult, 
+                    setSearchResult, 
+                    selectedRecipe, 
+                    setSelectedRecipe, 
+                    favoriteRecipes, 
+                    setFavoriteRecipes, 
+                    toggleFavorite, 
+                    fetchAndSetSelectedRecipe 
+                    }}
+          >
       <Router>
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -74,6 +90,8 @@ function App() {
           <Route path="/search/:id" element={<RecipeDetails />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/:category" element={<Category />} />
+          <Route path="/countries" element={<Countries />} />
+          <Route path="/countries/:country" element={<Country />} />
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </Router>

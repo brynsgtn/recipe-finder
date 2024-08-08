@@ -10,36 +10,52 @@ export default function Home() {
   
   const navigate = useNavigate();
 
+  // Function to navigate to Categories Page
   const goToCategories = () => {
     navigate("/categories")
   }
 
+  // Function to navigate to Countries Page
+  const goToCountry = () => {
+    navigate("/countries")
+  }
+
 
     return (
-        <>
           <div className={classes.homeContainer}>
             <Header />   
             <div className={classes.wrapper}>
-              <Overlay color="#000" opacity={.9} zIndex={1} />
+              <Overlay color="#000" 
+                       opacity={.9} 
+                       zIndex={1} 
+              />
                 <div className={classes.inner}>
                   <Title className={classes.title}>
-                  DishDiscover
+                    DishDiscover
                   </Title>
                   <Container size={540}>
                       <SearchInput/>
                   </Container>
                   <div className={classes.controls}>
-                    <Button className={classes.control} variant="filled" color="red"size="lg" onClick={goToCategories}>
-                      Categories
+                    <Button className={classes.control} 
+                            variant="filled" 
+                            color="red" 
+                            size="lg" 
+                            onClick={goToCategories}
+                    >
+                            Categories
                     </Button>
-                    <Button className={cx(classes.control, classes.secondaryControl)} variant="light" color="yellow" size="lg">
-                      Country
+                    <Button className={cx(classes.control, classes.secondaryControl)} 
+                            variant="light" 
+                            color="yellow" 
+                            size="lg" 
+                            onClick={goToCountry}
+                     >
+                            Country
                     </Button>
                   </div>
                 </div>
             </div>
           </div>
-        </>
-       
       );
 }

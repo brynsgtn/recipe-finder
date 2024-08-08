@@ -25,6 +25,11 @@ const links = [
     navigate(link);
   };
 
+
+  const goToHome = () => {
+    navigate("/")
+  }
+
   const items = links.map((link) => (
     <a
       key={link.label}
@@ -41,7 +46,7 @@ const links = [
     <header className={classes.header}>
       <Container size="md" className="p-2">
         <div className={classes.inner}>
-          <Group align="center" spacing="sm">
+          <Group align="center" spacing="sm" onClick={goToHome}>
             <Image src="../src/assets/images/dishlogo.png" alt="Logo" className={classes.logo} />
             <p className={classes.title}>DishDiscover</p>
           </Group>

@@ -9,9 +9,6 @@ const navigate = useNavigate();
 const goToCategory = (category) => {
     navigate(`/categories/${category}`)
 }
-const capitalizeWords = (str) => {
-    return str.replace(/\b\w/g, (char) => char.toUpperCase());
-  };
 
 const getFirstSentence = (description) => {
     const firstSentence = description.match(/[^.]*[.]/)?.[0] || description;

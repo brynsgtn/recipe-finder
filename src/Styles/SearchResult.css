@@ -13,15 +13,12 @@
 .result-container {
     flex: 1;
     max-width: 1200px;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;  */
  
 }
 
 .header{
-    font-weight: 800;
-    font-size: rem(40);
+    font-weight: 700;
+    font-size: rem(36);
     letter-spacing: rem(-1px);
     padding-left: var(--mantine-spacing-md);
     padding-right: var(--mantine-spacing-md);
@@ -56,4 +53,37 @@
     display: flex;
     justify-content: center; /* Center horizontally */
     margin-top: 20px; /* Add space above the button */
+}
+
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+/* SearchResult.css or a separate CSS file */
+
+.breadcrumbs {
+  margin-bottom: 20px; /* Space below breadcrumbs */
+  font-size: 26px; /* Font size */
+  color: #FFB22C; /* Text color */
+}
+
+.breadcrumbs a {
+  color: #FFB22C; /* Link color */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline; /* Underline links on hover */
+}
+
+.breadcrumbs .mantine-Breadcrumbs-separator {
+  color: #FFB22C; /* Separator color */
+  margin: 0 8px; /* Space around separator */
+}
+
+.breadcrumbs .mantine-Breadcrumbs-separator:last-child {
+  display: none; /* Hide last separator if needed */
 }

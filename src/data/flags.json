@@ -1,0 +1,120 @@
+{
+  "flags": [
+    {
+      "American": "https://flagcdn.com/w320/us.jpg",
+      "description": "Known for its diverse and hearty fare, including burgers, BBQ, and comfort foods."
+    },
+    {
+      "British": "https://flagcdn.com/w320/gb.jpg",
+      "description": "Features traditional dishes like fish and chips, roasts, and hearty pies."
+    },
+    {
+      "Canadian": "https://flagcdn.com/w320/ca.jpg",
+      "description": "Celebrated for its regional diversity, including poutine, maple syrup, and tourtière."
+    },
+    {
+      "Chinese": "https://flagcdn.com/w320/cn.jpg",
+      "description": "Renowned for its wide variety of flavors and ingredients, including dim sum, noodles, and stir-fries."
+    },
+    {
+      "Croatian": "https://flagcdn.com/w320/hr.jpg",
+      "description": "Offers Mediterranean-inspired dishes with fresh seafood, meats, and local vegetables."
+    },
+    {
+      "Dutch": "https://flagcdn.com/w320/nl.jpg",
+      "description": "Known for its simple and hearty meals such as stroopwafels, herring, and cheese."
+    },
+    {
+      "Egyptian": "https://flagcdn.com/w320/eg.jpg",
+      "description": "Features rich and flavorful dishes like koshari, falafel, and shawarma."
+    },
+    {
+      "Filipino": "https://flagcdn.com/w320/ph.jpg",
+      "description": "Offers a unique blend of flavors with dishes like adobo, sinigang, and lechon."
+    },
+    {
+      "French": "https://flagcdn.com/w320/fr.jpg",
+      "description": "Famous for its refined cuisine, including pastries, cheeses, and gourmet dishes."
+    },
+    {
+      "Greek": "https://flagcdn.com/w320/gr.jpg",
+      "description": "Known for its Mediterranean diet with dishes like moussaka, souvlaki, and tzatziki."
+    },
+    {
+      "Indian": "https://flagcdn.com/w320/in.jpg",
+      "description": "Rich in spices and variety, with popular dishes including curries, biryanis, and dosas."
+    },
+    {
+      "Irish": "https://flagcdn.com/w320/ie.jpg",
+      "description": "Celebrated for its hearty stews, soda bread, and traditional dishes like shepherd's pie."
+    },
+    {
+      "Italian": "https://flagcdn.com/w320/it.jpg",
+      "description": "Renowned for its pasta, pizza, and gelato, emphasizing fresh ingredients and bold flavors."
+    },
+    {
+      "Jamaican": "https://flagcdn.com/w320/jm.jpg",
+      "description": "Known for its flavorful and spicy dishes, including jerk chicken, ackee and saltfish, and patties."
+    },
+    {
+      "Japanese": "https://flagcdn.com/w320/jp.jpg",
+      "description": "Features delicacies like sushi, ramen, and tempura, with an emphasis on fresh and seasonal ingredients."
+    },
+    {
+      "Kenyan": "https://flagcdn.com/w320/ke.jpg",
+      "description": "Offers a variety of hearty and flavorful dishes, including nyama choma, ugali, and sukuma wiki."
+    },
+    {
+      "Malaysian": "https://flagcdn.com/w320/my.jpg",
+      "description": "Known for its rich and diverse flavors, including laksa, nasi lemak, and satay."
+    },
+    {
+      "Mexican": "https://flagcdn.com/w320/mx.jpg",
+      "description": "Famous for its vibrant and flavorful cuisine, including tacos, enchiladas, and guacamole."
+    },
+    {
+      "Moroccan": "https://flagcdn.com/w320/ma.jpg",
+      "description": "Features aromatic and spiced dishes such as tagine, couscous, and pastilla."
+    },
+    {
+      "Polish": "https://flagcdn.com/w320/pl.jpg",
+      "description": "Known for its hearty fare, including pierogi, bigos, and kielbasa."
+    },
+    {
+      "Portuguese": "https://flagcdn.com/w320/pt.jpg",
+      "description": "Offers rich flavors with dishes like bacalhau, pastéis de nata, and caldo verde."
+    },
+    {
+      "Russian": "https://flagcdn.com/w320/ru.jpg",
+      "description": "Features hearty and comforting dishes, including borscht, pelmeni, and blini."
+    },
+    {
+      "Spanish": "https://flagcdn.com/w320/es.jpg",
+      "description": "Celebrated for its tapas, paella, and rich regional dishes."
+    },
+    {
+      "Thai": "https://flagcdn.com/w320/th.jpg",
+      "description": "Known for its balance of sweet, sour, salty, and spicy flavors, with dishes like pad Thai and green curry."
+    },
+    {
+      "Tunisian": "https://flagcdn.com/w320/tn.jpg",
+      "description": "Offers spicy and flavorful dishes, including couscous, brik, and harissa."
+    },
+    {
+      "Turkish": "https://flagcdn.com/w320/tr.jpg",
+      "description": "Famous for its diverse and rich flavors, including kebabs, baklava, and mezes."
+    },
+    {
+      "Ukrainian": "https://flagcdn.com/w320/ua.jpg",
+      "description": "Known for its hearty and comforting dishes like borscht, varenyky, and holubtsi."
+    },
+    {
+      "Unknown": "https://flagcdn.com/w320/un.jpg",
+      "description": "Features a variety of dishes with no specific regional influence."
+    },
+    {
+      "Vietnamese": "https://flagcdn.com/w320/vn.jpg",
+      "description": "Renowned for its fresh and vibrant flavors, including pho, banh mi, and spring rolls."
+    }
+  ]
+}

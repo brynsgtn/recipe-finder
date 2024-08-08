@@ -157,3 +157,28 @@
   margin-top: 20px; /* Add some spacing from the content above */
   padding-bottom: 20px;
 }
+
+.breadcrumbs {
+
+  font-size: 26px !important; /* Font size */
+  color: #FFB22C; /* Text color */
+  margin: 30px 0px 0px;
+}
+
+.breadcrumbs a {
+  color: #FFB22C; /* Link color */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline; /* Underline links on hover */
+}
+
+.breadcrumbs .mantine-Breadcrumbs-separator {
+  color: #FFB22C; /* Separator color */
+  margin: 0 8px; /* Space around separator */
+}
+
+.breadcrumbs .mantine-Breadcrumbs-separator:last-child {
+  display: none; /* Hide last separator if needed */
+}

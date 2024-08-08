@@ -57,6 +57,9 @@ function SearchInput(props) {
       } else if (recipe && recipe.meals) {
         setSearchResult(recipe);
         search();
+      } else {
+        setSearchResult({ meals: [] });
+        search();
       }
     } else if (e.key === "ArrowDown") {
       setSelectedIndex((prevIndex) => Math.min(prevIndex + 1, recipe && recipe.meals ? recipe.meals.length - 1 : 0));

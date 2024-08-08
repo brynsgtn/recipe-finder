@@ -27,8 +27,8 @@
     font-family:
       Greycliff CF,
       var(--mantine-font-family);
-      @media (max-width: $mantine-breakpoint-xs) {
-        font-size: rem(30px);
+      @media (max-width: 576px) {
+        font-size: 30px; 
         text-align: center;
   
       }
@@ -62,7 +62,6 @@
   height: 70vh;
 }
 
-/* SearchResult.css or a separate CSS file */
 
 .breadcrumbs {
   margin-bottom: 20px; /* Space below breadcrumbs */

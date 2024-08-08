@@ -162,7 +162,7 @@
 
   font-size: 26px !important; /* Font size */
   color: #FFB22C; /* Text color */
-  margin: 30px 0px 0px;
+  margin: 50px 0px 0px;
 }
 
 .breadcrumbs a {
@@ -181,4 +181,11 @@
 
 .breadcrumbs .mantine-Breadcrumbs-separator:last-child {
   display: none; /* Hide last separator if needed */
+}
+
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

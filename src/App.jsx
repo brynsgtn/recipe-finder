@@ -11,6 +11,9 @@ import Categories from './Pages/Categories';
 import Category from './Pages/Category';
 import Countries from './Pages/Countries';
 import Country from './Pages/Country';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 // Context for sharing state across components
@@ -47,13 +50,23 @@ function App() {
     localStorage.setItem("favoriteRecipes", JSON.stringify(favoriteRecipes));
   }, [searchResult, selectedRecipe, favoriteRecipes]);
 
+  // Helper function to capitalize every first letter in each word of a string
+  const capitalizeWords = (str) => {
+    return str.replace(/\b\w/g, (char) => char.toUpperCase());
+  };
   // Function to add or remove favorite recipes
   const toggleFavorite = (meal) => {
     setFavoriteRecipes((prevFavorites) => {
       const isFavorite = prevFavorites.some((fav) => fav.idMeal === meal.idMeal);
       if (isFavorite) {
+        toast.error(`${capitalizeWords(meal.strMeal)} removed from favorites!`, {
+          position: "bottom-center"
+        });
         return prevFavorites.filter((fav) => fav.idMeal !== meal.idMeal);
       } else {
+        toast.success(`${capitalizeWords(meal.strMeal)} added to favorites!`, {
+          position: "bottom-center"
+        });
         return [...prevFavorites, meal];
       }
     });
@@ -95,6 +108,7 @@ function App() {
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </Router>
+      <ToastContainer autoClose={1000} />
     </RecipeContext.Provider>
   );
 }

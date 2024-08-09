@@ -1,4 +1,4 @@
-import { Card, Image, Text, Group, Button } from '@mantine/core';
+import { Card, Image, Text, Group, Button, Loader } from '@mantine/core';
 import classes from '../Styles/CategoryCard.module.css';
 import { useNavigate } from 'react-router-dom';
 import flags from '../data/flags.json'
@@ -19,7 +19,13 @@ const goToCountry = (country) => {
     return (
         <Card withBorder radius="md" p="md" className={classes.card}>
         <Card.Section>
-        <Image src={flag ? flag[strArea] : "https://flagcdn.com/w320/un.jpg"} alt={strArea} height={180} />
+        { !country ? (
+                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '180px' }}>
+                    <Loader color="yellow" />
+                  </div>
+              ) : (
+                  <Image src={flag ? flag[strArea] : "https://flagcdn.com/w320/un.jpg"} alt={strArea} height={180} />
+              )};
         </Card.Section>
   
         <Card.Section className={classes.section} mt="md">

@@ -1,5 +1,5 @@
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react';
-import { Card, Image, Text, Group, Badge, Button, ActionIcon } from '@mantine/core';
+import { Card, Image, Text, Group, Badge, Button, ActionIcon, Loader } from '@mantine/core';
 import classes from '../Styles/RecipeCard.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RecipeContext } from '../App';
@@ -37,9 +37,14 @@ export default function RecipeCard({ meal }) {
   return (
     <Card withBorder radius="md" p="md" className={classes.card}>
       <Card.Section>
-        <Image src={strMealThumb} alt={strMeal} height={180} />
+        { !data ? (
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '180px' }}>
+            <Loader color="yellow" />
+          </div>
+        ) : (
+          <Image src={strMealThumb} alt={strMeal} height={180} />
+        )}
       </Card.Section>
-
       <Card.Section className={classes.section} mt="md">
         {(strArea || (recipe && recipe.strArea)) && (
           <Badge size="sm" variant="light" className="mb-3" color="red">

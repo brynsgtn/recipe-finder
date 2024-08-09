@@ -47,7 +47,7 @@ const links = [
       <Container size="md" className="p-2">
         <div className={classes.inner}>
           <Group align="center" spacing="sm" onClick={goToHome}>
-            <Image src="../src/assets/images/dishlogo.svg" alt="Logo" className={classes.logo} />
+            <Image src="../src/dist/assets/images/dishlogo.svg" alt="Logo" className={classes.logo} />
             <p className={classes.title}>DishDiscover</p>
           </Group>
           <Group gap={5} visibleFrom="sm">

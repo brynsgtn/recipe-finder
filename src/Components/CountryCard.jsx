@@ -25,7 +25,7 @@ const goToCountry = (country) => {
                   </div>
               ) : (
                   <Image src={flag ? flag[strArea] : "https://flagcdn.com/w320/un.jpg"} alt={strArea} height={180} />
-              )};
+              )}
         </Card.Section>
   
         <Card.Section className={classes.section} mt="md">

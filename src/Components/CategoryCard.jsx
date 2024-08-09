@@ -26,7 +26,7 @@ const getFirstSentence = (description) => {
               </div>
               ) : (
                 <Image src={strCategoryThumb} alt={strCategory ? strCategory : strMeal} height={180} />
-              )};
+              )}
           </Card.Section>
         
           <Card.Section className={classes.section} mt="md">

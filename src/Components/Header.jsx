@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import classes from '../Styles/Header.module.css';
 import { RecipeContext } from '../App';
 import { useContext } from 'react';
+import logo from '../assets/images/dishlogo.svg';
+
 
 
 export function Header() {
@@ -47,7 +49,7 @@ const links = [
       <Container size="md" className="p-2">
         <div className={classes.inner}>
           <Group align="center" spacing="sm" onClick={goToHome}>
-            <Image src="../src/dist/assets/images/dishlogo.svg" alt="Logo" className={classes.logo} />
+            <Image src={logo} alt="Logo" className={classes.logo} />
             <p className={classes.title}>DishDiscover</p>
           </Group>
           <Group gap={5} visibleFrom="sm">

@@ -4,7 +4,7 @@
 
 ## Overview
 
-Dish Discover Recipe Finder is a web application built with React, designed to help users explore and discover recipes based on their available ingredients and preferences. The application uses SWR for efficient data fetching and caching, integrates TheMealDB API for detailed recipe information, and utilizes Mantine for modern and responsive UI components. React Toastify is employed for user-friendly notifications. React Router is used for navigation, and React Hooks such as `useState`, `useEffect`, `useParams`, and `useContext` are utilized for state and context management.
+Dish Discover Recipe Finder is a web application built with React, designed to help users explore and discover recipes based on their available ingredients and preferences. The application uses SWR for efficient data fetching and caching, integrates TheMealDB API for detailed recipe information, and utilizes Mantine for modern and responsive UI components. React Toastify is employed for user-friendly notifications. React Router is used for navigation, and React Hooks such as `useState`, `useEffect`, `useParams`, `useContext`, and `useNavigate` are utilized for state and context management.
 
 ## Features
 
@@ -14,7 +14,7 @@ Dish Discover Recipe Finder is a web application built with React, designed to h
 - **Responsive Design**: Optimized for various screen sizes and devices to provide a seamless user experience.
 - **Loading Indicators**: Provides visual feedback while data is being fetched from the API.
 - **Routing**: Utilizes React Router for navigating between different views and pages within the application.
-- **State Management**: Employs React Hooks such as `useState`, `useEffect`, `useParams`, and `useContext` for managing state and context within the app.
+- **State Management**: Employs React Hooks such as `useState`, `useEffect`, `useParams`, `useContext`, and `useNavigate` for managing state and navigation within the app.
 
 ## Purpose
 
@@ -31,6 +31,7 @@ The Dish Discover Recipe Finder application demonstrates the use of modern web d
   - `useEffect` for handling side effects and data fetching.
   - `useParams` for accessing route parameters.
   - `useContext` for managing and accessing global state.
+  - `useNavigate` for programmatic navigation and route changes.
 
 ## Technologies Used
 
@@ -85,5 +86,4 @@ To set up and run the Dish Discover Recipe Finder application locally, follow th
 ![Recipe Details Page](/public/Screenshot4.png)
 ![Favorite Recipes Page](/public/Screenshot5.png)
 ![Add Recipe to Favorites](/public/Screenshot6.png)
-![Remove Recipe to Favorites](/public/Screenshot7.png)
-
+![Remove Recipe from Favorites](/public/Screenshot7.png)

@@ -11,7 +11,7 @@ import { BrowserRouter } from 'react-router-dom';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <MantineProvider withGlobalStyles withNormalizeCSS>
     <React.StrictMode>
-      <BrowserRouter basename={"/<REPO>/"}>
+      <BrowserRouter basename={"/recipe-finder/"}>
         <App />
       </BrowserRouter>
     </React.StrictMode>

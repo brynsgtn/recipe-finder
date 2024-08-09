@@ -29,3 +29,15 @@
     height: 70vh;
   }
   
+
+  .result-page-container {
+    min-height: 100vh;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5), /* Dark overlay color */
+        rgba(0, 0, 0, 0.5) /* Same color for a solid darkening effect */
+    ), url(../assets/images/result.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+
+}

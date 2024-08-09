@@ -49,8 +49,10 @@ export default function Categories() {
     // Show loader if data is still fetching
     if (!data) {
         return (
-            <div className="loader-container">
-                <Loader color="yellow" size="xl" type="bars" className="loader-item" />
+            <div className="result-page-container">
+                <div className="loader-container">
+                 <Loader color="yellow" size="xl" type="bars" className="loader-item" />
+                </div>
             </div>
         );
     }

@@ -51,9 +51,11 @@ export default function Country() {
       // Show loader if data is still fetching
       if (!data) {
           return (
+            <div className="result-page-container">
               <div className="loader-container">
-                  <Loader color="yellow" size="xl" type="bars" className="loader-item" />
-              </div>
+                <Loader color="yellow" size="xl" type="bars" className="loader-item" />
+             </div>
+            </div>
           );
       }
 
